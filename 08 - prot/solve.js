@@ -1,7 +1,7 @@
 import { consola } from 'consola';
 import clipboard from 'clipboardy';
 import { getRawData, timer } from '../utils.js';
-import { codon } from '../codon.js';
+import { codons } from '../adn.js';
 consola.wrapAll();
 
 consola.start('Starting...');
@@ -12,9 +12,9 @@ let output = '';
 let i = 0;
 while (i < input.length) {
   const str = input.slice(i, i + 3);
-  if (codon[str]) {
-    if (codon[str] !== 'Stop') {
-      output += codon[str];
+  if (codons[str]) {
+    if (codons[str] !== 'Stop') {
+      output += codons[str];
     }
     i += 3;
   } else {

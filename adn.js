@@ -1,4 +1,4 @@
-export const codon = {
+export const codons = {
   UUU: 'F',
   CUU: 'L',
   AUU: 'I',
@@ -64,3 +64,22 @@ export const codon = {
   AGG: 'R',
   GGG: 'G',
 };
+
+export const applyCodon = (input) => {
+  let output = '';
+  let i = 0;
+  while (i < input.length) {
+    const str = input.slice(i, i + 3);
+    if (codons[str]) {
+      if (codons[str] !== 'Stop') {
+        output += codons[str];
+      }
+      i += 3;
+    } else {
+      output += input[i++];
+    }
+  }
+  return output;
+};
+
+export const dna2rna = (seq) => seq.replaceAll('T', 'U');
