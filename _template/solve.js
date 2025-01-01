@@ -23,7 +23,8 @@ const [one, two] = getRawData()
 const lines = getDataLines();
 const grid = getGrid(getDataLines());
 const values = getDataLines().map(nums);
-const sequences = getFASTASequences();
+const seqmap = getFASTASequences();
+const sequences = [...seqmap.values()];
 
 const key = (x, y, x2, y2) => {
   if (x2 && y2) return `${x},${y},${x2},${y2}`;

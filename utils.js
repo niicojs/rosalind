@@ -360,6 +360,14 @@ export const count = (arr, value) => {
   return arr.filter((v) => v === value).length;
 };
 
+export const fact = (n) => {
+  let result = 1n;
+  for (let i = 1; i <= n; i++) {
+    result *= BigInt(i);
+  }
+  return result;
+};
+
 export const longestCommonSubstring = (s1, s2) => {
   // Multidimensional array for dynamic programming algorithm
   const cache = new Array(s1.length + 1);
