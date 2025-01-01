@@ -1,14 +1,7 @@
 import { consola } from 'consola';
 import clipboard from 'clipboardy';
-import { count, getFASTASequences, timer } from '../utils.js';
+import { getRawData, nums, timer } from '../utils.js';
 consola.wrapAll();
-
-consola.start('Starting...');
-const t = timer();
-
-const sequences = getFASTASequences();
-const values = [...sequences.values()];
-const sequence = values[0];
 
 const fact = (n) => {
   let result = 1n;
@@ -18,7 +11,14 @@ const fact = (n) => {
   return result;
 };
 
-let answer = fact(count(sequence, 'A')) * fact(count(sequence, 'C'));
+const pper = (n, k) => fact(n) / fact(n - k);
+
+consola.start('Starting...');
+const t = timer();
+
+const [one, two] = nums(getRawData().trim());
+
+let answer = pper(one, two) % 1_000_000n;
 
 consola.success('result', answer);
 consola.success('Done in', t.format());

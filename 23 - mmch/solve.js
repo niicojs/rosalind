@@ -18,7 +18,20 @@ const fact = (n) => {
   return result;
 };
 
-let answer = fact(count(sequence, 'A')) * fact(count(sequence, 'C'));
+const [A, C, G, U] = [
+  count(sequence, 'A'),
+  count(sequence, 'C'),
+  count(sequence, 'G'),
+  count(sequence, 'U'),
+];
+
+consola.info({ A, C, G, U });
+
+const [min1, max1] = [Math.min(A, U), Math.max(A, U)];
+const [min2, max2] = [Math.min(C, G), Math.max(C, G)];
+
+let answer = fact(max1) / fact(max1 - min1);
+answer *= fact(max2) / fact(max2 - min2);
 
 consola.success('result', answer);
 consola.success('Done in', t.format());
